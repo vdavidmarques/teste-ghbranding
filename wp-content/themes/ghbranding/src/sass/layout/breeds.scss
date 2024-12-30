@@ -1,0 +1,171 @@
+@import "../helpers/variables.scss";
+@import "../helpers/mixins.scss";
+@import "../helpers/placeholder.scss";
+
+.breeds {
+  &--tools{
+    display: flex;
+    align-items: center;
+    row-gap: 1.25rem;
+    flex-direction: column;
+    margin-bottom: 3rem;
+
+    @media screen and (min-width: $breakpoint-lg) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--search{
+      .search-input-wrapper {
+        position: relative;
+        display: block; 
+      }
+      
+      .search-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px; 
+        transform: translateY(-50%);
+        pointer-events: none;
+        width: 1.0625rem;
+        height: 1.0625rem;
+        background-image: url('../icons/search.svg');
+        border: none;
+      }     
+    }
+  }
+
+  &--lists {
+    display: grid;
+    @include grid-cols-1;
+    row-gap: 3rem;
+    column-gap: 1.5rem;
+
+    @media screen and (min-width: $breakpoint-md) {
+        @include grid-cols-2;
+    }
+
+    @media screen and (min-width: $breakpoint-xl) {
+        @include grid-cols-4;
+    }
+
+    &--list{
+      border: 1px solid $fColor;
+      border-radius: 1.25rem;
+      height: fit-content;
+      position: relative;
+
+
+      &--image{
+        height: 10rem;
+        border-radius: 1.25rem 1.25rem 0 0;
+        overflow: hidden;
+
+        .rare{
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: -0.625rem;
+          left: 2.125rem;
+          padding-left: 0.625rem;
+          font-size: 0.75rem;
+          text-align: center;
+          color: $white;
+          background-image: url('../icons/rare.svg');
+          width: 3.5625rem;
+          height: 3.875rem;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+
+          span{
+            font-weight: bold;
+          }
+        }
+      }
+      
+      &--content{
+        padding: 16px 16px 24px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+
+        &--header{
+          display: flex;
+          flex-direction: column;
+          row-gap: 0.5rem;
+
+          .title{
+            color: $fColor-dark;
+            font-size: 1.125rem;
+            font-weight: bold;
+          }
+
+          .alt, .subtitle{
+            font-size: 0.75rem;
+            color: $sColor;
+          }
+          .subtitle{
+            font-weight: bold;
+            line-height: 0.9375rem;
+          }
+        }
+
+        &--origin{
+          color: $tColor;
+          font-size: 0.875rem;
+          font-weight: 600;
+          position: relative;
+          padding-left: 1rem;
+
+          &::after{
+            left: 0;
+            background-image: url('../icons/location.svg');
+            width: 0.5625rem;
+            height: 0.8125rem;
+            @extend %icons;
+            transform: translateY(0.5625rem);
+          }
+        }
+
+        &--features{
+          display: grid;
+          @include grid-cols-2;
+          column-gap: 1.5rem;
+          row-gap: 1rem;
+          color: $sColor;
+          font-size: 0.75rem;
+          font-weight: 500;
+          
+          .feature{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            .tag{
+              color: $fColor-dark;
+              background-color: $gray-light;
+              border-radius: 0.5rem;
+              padding: 0.125rem;
+              min-width: 2.5rem;
+              text-align: center;
+            }
+          }
+        }
+
+        &--desc{
+          color: $sColor;
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+
+        .button.default{
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

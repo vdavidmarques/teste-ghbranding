@@ -1,0 +1,24 @@
+@import "../helpers/variables.scss";
+@import "../helpers/mixins.scss";
+@import "../helpers/placeholder.scss";
+
+.header{
+  &--top{
+    background-color: $fColor;
+    color: $white;
+    font-size: 0.75rem;
+    margin-bottom: 6.5rem;
+    &.active{
+      color: $green;
+    }
+  }
+  .title{
+    font-size: 1.25rem;
+    margin-bottom: 3rem;
+    color: $fColor-dark;
+    text-align: center;
+    @media screen and (min-width: $breakpoint-lg) {
+      font-size: 3rem;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import './variables.scss';
+@import './mixins.scss';
+@import "../helpers/placeholder.scss";
+
+.button {
+  transition-property: color, background-color, border-color,
+  text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  width: fit-content;
+  padding: 0.75rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: $font-inter;
+  cursor: pointer;
+
+  &.default {
+    background-color: $white;
+    color: $fColor;
+    border: 1px solid $fColor;
+    position: relative;
+    min-width: 11rem;
+    display: flex;
+    justify-content: left;
+    
+    &.like{
+      &::after{     
+        right: 10px;     
+        background-image: url('../icons/like.svg)');
+        width: 1.5rem;
+        height: 1.5rem;
+        transform: translateY(0.625rem);  
+        @extend %icons;  
+      }
+  
+    }
+    &:hover{
+      background-color: $fColor;
+      color: $fColor-medium;
+      &.like::after{
+        background-image: url('../icons/liked.svg)');
+      }
+    }
+  }
+}

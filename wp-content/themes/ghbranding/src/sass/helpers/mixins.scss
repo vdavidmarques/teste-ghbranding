@@ -1,0 +1,225 @@
+@import "./variables.scss";
+
+@mixin font-montserrat {
+  font-family: "MontSerrat", sans-serif;
+  font-display: swap; 
+}
+
+@mixin font-inter {
+  font-family: $font-inter;
+  font-display: swap; 
+}
+
+@mixin mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin text-xs {//12px
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+@mixin heading-titles {
+  text-transform: uppercase;
+  font-weight: bold;
+  @include font-inter;
+}
+
+@mixin heading-title-sm {//14px
+  @include text-sm;
+  @include heading-titles;
+}
+
+@mixin transition-colors {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@mixin transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@mixin btn-menu-mobile {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  padding-left: 1.5rem;
+  text-indent: -624.9375rem;
+  border: none;
+}
+
+@mixin button-primary{
+  width: fit-content;
+  height: fit-content;
+  @include heading-text-sm;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: $fColor;
+  color: $white;
+  padding: 1.25rem;
+  font-weight: bold;
+  border: none;
+  
+  &:hover{
+    background-color: $fColor-dark;
+    @include transition-colors;
+  }
+}
+
+@mixin w-full {
+  width: 100%;
+}
+
+@mixin h-full {
+  width: 100%;
+}
+
+@mixin grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@mixin grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@mixin grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@mixin grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@mixin grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+@mixin grid-cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@mixin grid-cols-7 {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+@mixin grid-cols-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+@mixin grid-cols-9 {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+@mixin grid-cols-10 {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+
+@mixin grid-cols-11 {
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+}
+
+@mixin grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+@mixin col-span-1 {
+  grid-column: span 1 / span 1;
+}
+@mixin col-span-2 {
+  grid-column: span 2 / span 2;
+}
+@mixin col-span-3 {
+  grid-column: span 3 / span 3;
+}
+@mixin col-span-4 {
+  grid-column: span 4 / span 4;
+}
+@mixin col-span-5 {
+  grid-column: span 5 / span 5;
+}
+@mixin col-span-6 {
+  grid-column: span 6 / span 6;
+}
+@mixin col-span-7 {
+  grid-column: span 7 / span 7;
+}
+@mixin col-span-8 {
+  grid-column: span 8 / span 8;
+}
+@mixin col-span-9 {
+  grid-column: span 9 / span 9;
+}
+@mixin col-span-10 {
+  grid-column: span 10 / span 10;
+}
+@mixin col-span-11 {
+  grid-column: span 11 / span 11;
+}
+@mixin col-span-12 {
+  grid-column: span 12 / span 12;
+}
+@mixin col-start-inherit {
+  grid-column-start: inherit;
+}
+@mixin col-start-1 {
+  grid-column-start: 1;
+}
+@mixin col-start-2 {
+  grid-column-start: 2;
+}
+@mixin col-start-3 {
+  grid-column-start: 3;
+}
+@mixin col-start-4 {
+  grid-column-start: 4;
+}
+@mixin col-start-5 {
+  grid-column-start: 5;
+}
+@mixin col-start-6 {
+  grid-column-start: 6;
+}
+@mixin col-start-7 {
+  grid-column-start: 7;
+}
+@mixin col-start-8 {
+  grid-column-start: 8;
+}
+@mixin col-start-9 {
+  grid-column-start: 9;
+}
+@mixin col-start-10 {
+  grid-column-start: 10;
+}
+@mixin col-start-11 {
+  grid-column-start: 11;
+}
+@mixin col-start-12 {
+  grid-column-start: 12;
+}
+
+@mixin mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin anime-bounce{
+  animation: bounce 1s infinite;
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+}

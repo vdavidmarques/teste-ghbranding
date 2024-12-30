@@ -1,0 +1,16 @@
+@import "../helpers/variables.scss";
+@import "../helpers/mixins.scss";
+
+footer {
+  padding: 1.25rem 0;
+  background-color: $fColor;
+  margin-top: 2.5rem;
+  
+  a{
+    color: $white;
+    font-size: 0.75rem;
+  }
+}
+
+
+
