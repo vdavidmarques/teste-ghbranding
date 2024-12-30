@@ -70,7 +70,7 @@ add_action('wp_enqueue_scripts', 'carregar_fontes_assincronas');
 function fetch_cat_breeds_with_wp_remote()
 {
     $api_url = "https://api.thecatapi.com/v1/breeds";
-    $api_key = "live_lmipu6oKy6lOdgOXUN7xpP858rTFqTky8RzGkQEJqtkWazZJlPJHJGzM9fI09710";
+    $api_key = "your_api_key_here";
 
     $response = wp_remote_get($api_url, [
         'headers' => [
