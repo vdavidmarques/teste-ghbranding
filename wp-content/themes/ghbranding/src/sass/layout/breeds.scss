@@ -96,11 +96,30 @@
           flex-direction: column;
           row-gap: 0.5rem;
 
-          .title{
-            color: $fColor-dark;
-            font-size: 1.125rem;
-            font-weight: bold;
+          .name-favorite{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            align-items: center;
+
+            .button{
+              border: none;
+              background-color: transparent;
+              @extend %like-button;
+
+              &::after{
+                transform: translateY(0.1875rem);
+              }
+            }
+
+            .title{
+              color: $fColor-dark;
+              font-size: 1.125rem;
+              font-weight: bold;
+            }
           }
+
 
           .alt, .subtitle{
             font-size: 0.75rem;

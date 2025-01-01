@@ -1,1 +1,1 @@
-<div class="breeds--pagination"></div>
+<div class="pagination" id="pagination-container"></div>

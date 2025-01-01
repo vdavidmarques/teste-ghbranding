@@ -2,10 +2,12 @@
 <section class="breeds home">
         <?php
         include 'components/breeds-tools.php';
-        echo '<div class="breeds--lists">';
+        echo '<div class="breeds--lists" id="breeds-container">';
         $breeds = fetch_cat_breeds_with_wp_remote();
         if ($breeds) :
+            $i = 0;
             foreach ($breeds as $breed):
+                $i++;
                 include 'components/breeds-lists.php';
             endforeach;
         else:

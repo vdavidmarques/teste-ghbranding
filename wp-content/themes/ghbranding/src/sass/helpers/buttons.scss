@@ -26,24 +26,32 @@
     min-width: 11rem;
     display: flex;
     justify-content: left;
-    
-    &.like{
-      &::after{     
-        right: 10px;     
-        background-image: url('../icons/like.svg)');
-        width: 1.5rem;
-        height: 1.5rem;
-        transform: translateY(0.625rem);  
-        @extend %icons;  
-      }
-  
-    }
+        
     &:hover{
       background-color: $fColor;
       color: $fColor-medium;
-      &.like::after{
-        background-image: url('../icons/liked.svg)');
-      }
+    }
+
+  }
+
+  &.like{
+    @extend %like-button;
+    &::after{     
+      background-image: url('../icons/like.svg)');
+
+    }
+    &:hover::after{
+      background-image: url('../icons/liked.svg)');
+    }
+  }
+
+  &.liked{
+    @extend %like-button;
+    &::after{     
+      background-image: url('../icons/liked.svg)');
+    }
+    &:hover::after{
+      background-image: url('../icons/like.svg)');
     }
   }
 }

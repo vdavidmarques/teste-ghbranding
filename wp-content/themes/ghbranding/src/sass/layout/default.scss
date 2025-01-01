@@ -329,3 +329,41 @@ img {
 .overflow-hidde{
   overflow: hidden;
 }
+
+.breed-item {
+  display: none; /* Itens ocultos por padrão */
+}
+
+.breed-item[data-visible="true"] {
+  display: block; /* Itens visíveis */
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+  
+  button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: $fColor-medium;
+    background: transparent;
+    border: 1px solid $fColor-medium;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1rem;
+  
+    &.active{
+      background: $fColor-medium;
+      color: $white;
+      border: 1px solid $gray-medium;
+    }
+
+    &:hover{
+      background: $fColor-medium;
+      color: $white;
+      border: 1px solid $gray-medium;
+    }
+  }
+}

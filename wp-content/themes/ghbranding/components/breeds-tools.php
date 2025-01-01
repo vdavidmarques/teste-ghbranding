@@ -8,8 +8,8 @@
         </form>
     </div>
     <div class="breeds--tools--favorite">
-        <button class="button default like">
+        <a href="<?php echo home_url() . '/my-favorites'?>" class="button default like favorite-button">
             My favorites
-        </button>
+        </a>
     </div>
 </div>

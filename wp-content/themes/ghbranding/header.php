@@ -19,7 +19,11 @@
                 </div>
             </div>
             <div class="container">
-                <h1 class="title">Take a Look at Some of Our Pets</h1>   
+                <?php if(is_front_page() || is_search()): ?>
+                    <h1 class="title">Take a Look at Some of Our Pets</h1>   
+                <?php else: ?>
+                    <h2 class="title">You liked these:</h2>
+                <?php endif; ?>
             </div>
          </header>
          <div class="container">
