@@ -21,7 +21,7 @@
                 <h2 class="title"> <?php echo esc_html($breed->name); ?></h2>
                 <button 
                     type="submit" 
-                    class="button like favorite-button"
+                    class="button liked  favorite-button"
                     data-breed-id="<?php echo esc_js($breed->id); ?>" 
                     onclick="toggleFavorite('<?php echo esc_js($breed->id); ?>', this)"
                 >
