@@ -1,16 +1,16 @@
-<article class="breeds--lists--list breed-item" data-index="<?php echo $i; ?>">
+<article class="breeds--lists--list favorite">
     <div class="breeds--lists--list--image">
         <p class="rare">Rare <span><?php echo esc_attr($breed->rare); ?></span></p>
         <?php
-            $image_src = get_template_directory_uri() . '/dist/images/default.jpg';
+        $image_src = get_template_directory_uri() . '/dist/images/default.jpg';
 
-            if (isset($breed->image) && isset($breed->image->url) && !empty($breed->image->url)) {
-                $image_src = $breed->image->url;
-            } elseif (isset($breed->reference_image_id) && !empty(get_image_url($breed->reference_image_id))) {
-                $image_src = get_image_url($breed->reference_image_id);
-            } else {
-                error_log("Missing image for breed ID: " . $breed->id);
-            }
+        if (isset($breed->image) && isset($breed->image->url) && !empty($breed->image->url)) {
+            $image_src = $breed->image->url;
+        } elseif (isset($breed->reference_image_id) && !empty(get_image_url($breed->reference_image_id))) {
+            $image_src = get_image_url($breed->reference_image_id);
+        } else {
+            error_log("Missing image for breed ID: " . $breed->id);
+        }
         ?>
 
         <img src="<?php echo esc_url($image_src); ?>" alt="<?php echo esc_attr($breed->name); ?>">    
@@ -21,8 +21,9 @@
                 <h2 class="title"> <?php echo esc_html($breed->name); ?></h2>
                 <button 
                     type="submit" 
-                    class="button favorite-button"
+                    class="button like favorite-button"
                     data-breed-id="<?php echo esc_js($breed->id); ?>" 
+                    onclick="toggleFavorite('<?php echo esc_js($breed->id); ?>', this)"
                 >
                 </button>
             </div>
@@ -67,7 +68,7 @@
                 if (isset($breed->$feature_key)):
                     $i++;
             ?>
-                <li class="feature" <?php if($i > 6) echo 'style="display: none;"';?>>
+                <li class="feature" <?php if ($i > 6) echo 'style="display: none;"'; ?>>
                     <?php echo esc_html($feature_title); ?>
                     <span class=" tag"> <?php echo esc_html($breed->$feature_key); ?></span>
                 </li>

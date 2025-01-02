@@ -1,3 +1,4 @@
+//Search Function
 document.getElementById('search-breeds').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -13,32 +14,42 @@ document.getElementById('search-breeds').addEventListener('submit', function (e)
     window.location.href = searchUrl;
 });
 
- // Funções de cookies
- function getCookie(name) {
+//Favorite function
+function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
-    return '';
+    return null;
 }
 
 function setCookie(name, value, days = 7) {
-    const expires = new Date(Date.now() + days * 864e5).toUTCString();
-    document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    if (!value || value.length === 0) {
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; SameSite=Lax`;
+    } else {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = `${name}=${value}; expires=${expires}; path=/; SameSite=Lax`;
+    }
 }
 
-function toggleFavorite(id) {
+function toggleFavorite(breedId, button) {
     let favorites = getCookie('favorites') ? getCookie('favorites').split(',') : [];
-    
-    if (favorites.includes(id)) {
-        favorites = favorites.filter(fav => fav !== id); 
+    favorites = [...new Set(favorites.filter(fav => fav.trim() !== ''))];
+
+    if (favorites.includes(breedId)) {
+        favorites = favorites.filter(fav => fav !== breedId);
+        button.classList.remove('liked');
+        button.classList.add('like');
     } else {
-        favorites.push(id); 
+        favorites.push(breedId);
+        button.classList.remove('like');
+        button.classList.add('liked');
     }
 
-    setCookie('favorites', favorites.join(','), 7);
-    
-    alert('Favorites updated!');
-    location.reload(); 
+    if (favorites.length > 0) {
+        setCookie('favorites', favorites.join(','), 7);
+    } else {
+        setCookie('favorites', '', 7);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -47,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     favoriteButtons.forEach(button => {
         const breedId = button.getAttribute('data-breed-id');
+
         if (favorites.includes(breedId)) {
             button.classList.add('liked');
             button.classList.remove('like');
@@ -54,6 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
             button.classList.add('like');
             button.classList.remove('liked');
         }
+
+        button.addEventListener('click', function () {
+            toggleFavorite(breedId, button);
+        });
     });
 });
 
@@ -89,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Pagination
-
 document.addEventListener("DOMContentLoaded", function () {
     const itemsPerPage = 12; // Quantidade de itens por página
     const items = document.querySelectorAll(".breed-item");
@@ -99,12 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     let currentPage = 1;
 
-    // Função para exibir os itens da página atual
     function showPage(page) {
         const start = (page - 1) * itemsPerPage;
         const end = start + itemsPerPage;
 
-        // Atualiza visibilidade dos itens
         items.forEach((item, index) => {
             if (index >= start && index < end) {
                 item.setAttribute("data-visible", "true");
@@ -113,11 +126,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Atualiza os botões da paginação
         updatePagination(page);
     }
 
-    // Função para criar os botões de paginação
     function createPagination() {
         for (let i = 1; i <= totalPages; i++) {
             const button = document.createElement("button");
@@ -125,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
             button.dataset.page = i;
             button.classList.add("pagination-button");
 
-            // Adiciona evento de clique
             button.addEventListener("click", function () {
                 currentPage = parseInt(this.dataset.page, 10);
                 showPage(currentPage);
@@ -135,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Função para atualizar o botão ativo na paginação
     function updatePagination(activePage) {
         const buttons = paginationContainer.querySelectorAll(".pagination-button");
         buttons.forEach((button) => {
@@ -143,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Inicializar
     createPagination();
     showPage(currentPage);
 });
